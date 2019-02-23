@@ -1,0 +1,34 @@
+import { Request, ResponseToolkit } from 'hapi';
+import * as controller from './customers.controller';
+import { getBoomError } from '../../lib/error-utils';
+
+export async function getAllCustomersHandler(request: Request, h: ResponseToolkit) {
+  try {
+    const customers: Customer[] = await controller.getAllCustomers();
+    return h.response(customers).code(200);
+  } catch (e) {
+    return getBoomError(e);
+  }
+}
+
+export async function getCustomerByGuidHandler(request: Request, h: ResponseToolkit) {
+  const guid = request.params.guid;
+
+  try {
+    const customer: Customer = await controller.getCustomerByGuid(guid);
+    return h.response(customer).code(200);
+  } catch (e) {
+    return getBoomError(e);
+  }
+}
+
+export async function createCustomerHandler(request: Request, h: ResponseToolkit) {
+  const customer: Customer = request.payload as Customer;
+
+  try {
+    const customerGuid = await controller.createCustomer(customer);
+    return h.response({ customerGuid }).code(201);
+  } catch (e) {
+    return getBoomError(e);
+  }
+}

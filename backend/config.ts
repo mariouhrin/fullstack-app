@@ -8,10 +8,9 @@ const parseDateToUTC = (date: string) => {
 };
 types.setTypeParser(dateTypeOID, parseDateToUTC);
 
-// See APL-1000 - setting type parser for SERIAL (int4) to return strings for ids to prevent breaking changes
-const int4OID = 23;
-/* istanbul ignore next */
-types.setTypeParser(int4OID, (num) => num);
+// setting type parser for SERIAL (int4) to return strings for ids to prevent breaking changes
+// const int4OID = 23;
+// types.setTypeParser(int4OID, (num) => num);
 
 readConfig();
 

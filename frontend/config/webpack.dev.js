@@ -10,10 +10,11 @@ module.exports = (env) => {
     devtool: 'inline-source-map',
     devServer: {
       contentBase: './dist',
-      hot: true
+      hot: true,
+      open: true
     },
     module: {
-      rules: [stylesRules(env)]
+      rules: stylesRules(env)
     },
     plugins: [new webpack.HotModuleReplacementPlugin()],
     output: {

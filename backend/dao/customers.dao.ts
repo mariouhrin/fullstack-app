@@ -43,3 +43,29 @@ export async function createCustomerDao(customer: Customer, transaction?: Knex.T
 
   return createdCustomerGuid[0];
 }
+
+export async function updateCustomerDao(
+  customer: Customer,
+  guid: string,
+  transaction?: Knex.Transaction
+): Promise<void> {
+  const customerData = {
+    ...customer,
+    registered: new Date().toISOString()
+  };
+
+  const trx = transaction || knex;
+
+  await trx('customers')
+    .update(customerData)
+    .where('guid', guid);
+
+  return;
+}
+
+export async function deleteCustomerByGuidDao(guid: string, transaction?: Knex.Transaction): Promise<Customer> {
+  const trx = transaction || knex;
+  return trx('customers')
+    .delete()
+    .where('guid', guid);
+}

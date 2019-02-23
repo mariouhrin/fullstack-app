@@ -57,17 +57,3 @@ export class ConflictError extends ErrorWrapper {
     this.boomHandler = Boom.conflict;
   }
 }
-
-export class PreconditionFailedError extends ErrorWrapper {
-  constructor(message: string) {
-    super(message);
-    this.boomHandler = Boom.preconditionFailed;
-  }
-}
-
-export class NotAcceptableError extends ErrorWrapper {
-  constructor(message: string) {
-    super(message);
-    this.boomHandler = Boom.notAcceptable;
-  }
-}

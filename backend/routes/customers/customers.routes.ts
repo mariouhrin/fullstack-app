@@ -17,9 +17,7 @@ export default [
     options: {
       validate: {
         params: {
-          guid: Joi.string()
-            .required()
-            .description('ID of User')
+          guid: Joi.string().required()
         }
       },
       description: 'Get customer by guid'
@@ -33,8 +31,35 @@ export default [
       validate: {
         payload: JoiCustomer
       },
-      description: 'Creates new User'
+      description: 'Create new customer'
     },
     handler: handler.createCustomerHandler
+  },
+  {
+    method: 'PUT',
+    path: '/api/customers/{guid}',
+    options: {
+      validate: {
+        params: {
+          guid: Joi.string().required()
+        },
+        payload: JoiCustomer
+      },
+      description: 'Update customer'
+    },
+    handler: handler.updateCustomerHandler
+  },
+  {
+    method: 'DELETE',
+    path: '/api/customers/{guid}',
+    options: {
+      validate: {
+        params: {
+          guid: Joi.string().required()
+        }
+      },
+      description: 'Delete customer by guid'
+    },
+    handler: handler.deleterCustomerHandler
   }
 ];

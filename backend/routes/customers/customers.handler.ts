@@ -12,7 +12,7 @@ export async function getAllCustomersHandler(request: Request, h: ResponseToolki
 }
 
 export async function getCustomerByGuidHandler(request: Request, h: ResponseToolkit) {
-  const guid = request.params.guid;
+  const { guid } = request.params;
 
   try {
     const customer: Customer = await controller.getCustomerByGuid(guid);
@@ -28,6 +28,29 @@ export async function createCustomerHandler(request: Request, h: ResponseToolkit
   try {
     const customerGuid = await controller.createCustomer(customer);
     return h.response({ customerGuid }).code(201);
+  } catch (e) {
+    return getBoomError(e);
+  }
+}
+
+export async function updateCustomerHandler(request: Request, h: ResponseToolkit) {
+  const { guid } = request.params;
+  const customer: Customer = request.payload as Customer;
+
+  try {
+    await controller.updateCustomer(customer, guid);
+    return h.response().code(204);
+  } catch (e) {
+    return getBoomError(e);
+  }
+}
+
+export async function deleterCustomerHandler(request: Request, h: ResponseToolkit) {
+  const { guid } = request.params;
+
+  try {
+    await controller.deleteCustomerByGuid(guid);
+    return h.response().code(204);
   } catch (e) {
     return getBoomError(e);
   }

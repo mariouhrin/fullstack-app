@@ -1,0 +1,9 @@
+{
+  "name": "fullstact-app",
+  "private": true,
+  "workspaces": ["frontend", "backend"],
+  "version": "1.0.0",
+  "author": "Mario Uhrin",
+  "license": "MIT"
+
+}

@@ -1,0 +1,28 @@
+# Dependencies
+node_modules
+server/node_modules
+frontend/node_modules
+
+# Editors
+.idea
+*.iml
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# Ignore built ts files
+dist
+server/dist
+frontend/dist
+
+# .env files
+server/.env
+frontend/.env
+
+# Logs
+*.log
+logs
+
+
+

@@ -1,8 +1,9 @@
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
-CREATE TABLE users
+CREATE TABLE customers
 (
-  index SERIAL PRIMARY KEY,
+  index SERIAL
+  PRIMARY KEY,
   random uuid DEFAULT uuid_generate_v4(),
   isactive TEXT,
   balance TEXT,
@@ -14,7 +15,7 @@ CREATE TABLE users
   phone TEXT,
   address TEXT,
   registered TEXT
-)
+);
 
 
-COPY users FROM '/scripts/data.csv' delimiter ',' csv header;
+COPY customers FROM '/data/data.csv' delimiter ',' csv header;

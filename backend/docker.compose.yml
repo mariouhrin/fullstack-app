@@ -3,7 +3,7 @@ services:
   customers-db:
     image: postgres:9.6-alpine
     volumes:
-      - ./scripts/:/scripts
+      - ./data/:/data
     ports:
       - 5432:5432
     container_name: customers-db

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# copy server .env.example to .env
+# copy backend .env.example to .env
 cp ../.env.example ../.env
 
 # copy frontend .env.example to .env

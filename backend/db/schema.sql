@@ -2,8 +2,7 @@ CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 CREATE TABLE customers
 (
-  index SERIAL
-  PRIMARY KEY,
+  index SERIAL PRIMARY KEY,
   random uuid DEFAULT uuid_generate_v4(),
   isactive TEXT,
   balance TEXT,

@@ -4,7 +4,7 @@ import config from './config';
 
 import hapiLoggerPlugin from './lib/hapi-logger-plugin';
 
-const port = config.port
+const port = config.port;
 
 const http = new Hapi.Server({
   port,
@@ -32,8 +32,6 @@ const getGlobOptions = () => {
 
 export async function startHttpServer() {
   await http.register([hapiLoggerPlugin]);
-  http.auth.strategy('jwt', 'jwt', config.jwt);
-  http.auth.default('jwt');
 
   const globOptions = getGlobOptions();
 

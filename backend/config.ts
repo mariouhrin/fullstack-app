@@ -1,5 +1,4 @@
 import readConfig from './lib/read-config';
-import jwtValidate from './lib/jwt-validate';
 import moment from 'moment';
 import { types } from 'pg';
 
@@ -19,13 +18,6 @@ readConfig();
 export default {
   port: process.env.PORT,
   logLevel: process.env.LOG_LEVEL,
-  jwt: {
-    key: process.env.JWT_SECRET,
-    validate: jwtValidate,
-    verifyOptions: {
-      algorithms: ['HS256']
-    }
-  },
   db: {
     client: 'pg',
     version: '9.6',

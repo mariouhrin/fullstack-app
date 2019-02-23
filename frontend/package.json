@@ -55,10 +55,12 @@
     "axios": "^0.18.0",
     "classnames": "^2.2.6",
     "dotenv-webpack": "^1.5.7",
+    "lodash": "^4.17.11",
     "prop-types": "^15.6.2",
-    "react": "^16.6.0",
-    "react-dom": "^16.6.0",
-    "react-hot-loader": "^4.3.12"
+    "purecss": "^1.0.0",
+    "react": "^16.8.2",
+    "react-dom": "npm:@hot-loader/react-dom@16.8.2",
+    "react-hot-loader": "^4.6.5"
   },
   "proxy": "http://localhost:3010",
   "browserslist": [

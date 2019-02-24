@@ -16,8 +16,6 @@ export function TableNotActiveCustomers() {
     fetchInactiveCustomers();
   }, []);
 
-  console.log(data);
-
   return (
     <>
       <section style={{ width: '85%', margin: 'auto', fontSize: '8px', textAlign: 'center' }}>

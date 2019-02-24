@@ -50,8 +50,6 @@
     "webpack-merge": "^4.1.4"
   },
   "dependencies": {
-    "@material-ui/core": "^3.5.1",
-    "@material-ui/icons": "^3.0.1",
     "axios": "^0.18.0",
     "classnames": "^2.2.6",
     "dotenv-webpack": "^1.5.7",
@@ -61,6 +59,7 @@
     "react": "^16.8.2",
     "react-dom": "npm:@hot-loader/react-dom@16.8.2",
     "react-hot-loader": "^4.6.5",
+    "react-modal": "^3.8.1",
     "react-table": "^6.9.2"
   },
   "proxy": "http://localhost:3010",

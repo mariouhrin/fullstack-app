@@ -6,10 +6,15 @@ import { columnsToShow, customFilter } from './helpers';
 
 export function TableAllCustomers() {
   const [data, setData] = useState([]);
+  const [modal, setModal] = useState(false);
 
   const fetchAllData = async () => {
     const response = await axiosHandler('get', 'api/customers');
     setData(response.data);
+  };
+
+  const showModal = () => {
+    setModal(true);
   };
 
   useEffect(() => {
@@ -22,7 +27,7 @@ export function TableAllCustomers() {
         {data.length && (
           <ReactTable
             data={data}
-            columns={columnsToShow()}
+            columns={columnsToShow(true, showModal)}
             filterable
             defaultFilterMethod={customFilter}
             defaultPageSize={7}
@@ -35,6 +40,7 @@ export function TableAllCustomers() {
             className="-striped -highlight"
           />
         )}
+        {modal && <div>Show Modal</div>}
       </section>
     </>
   );

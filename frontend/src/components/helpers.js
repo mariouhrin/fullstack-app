@@ -1,4 +1,6 @@
-export function columnsToShow() {
+import React from 'react';
+
+export function columnsToShow(showAll, showModal) {
   const headersAndColumnWidth = {
     name: 100,
     balance: 70,
@@ -12,12 +14,37 @@ export function columnsToShow() {
     registered: 100
   };
 
-  const headers = Object.keys(headersAndColumnWidth);
-  const columns = headers.map((header) => ({
-    Header: header,
-    accessor: header,
-    width: headersAndColumnWidth[header]
-  }));
+  const cellStyle = { color: '#3366BB', fontWeight: 700, cursor: 'pointer' };
+  const cellLink = (row) => (
+    <div role="button" tabIndex={0} style={cellStyle} onClick={showModal}>
+      {row.value}
+    </div>
+  );
+
+  const updateOrDeleteColumns = {
+    update: { accessor: 'update', width: 40, Filter: () => <div />, Cell: cellLink },
+    delete: { accessor: 'delete', width: 40, Filter: () => <div />, Cell: cellLink }
+  };
+
+  // Cell: row => {
+  //   // const geneID = row.original.GENEID
+  //   return (
+  // <div className="table__row--link" onClick={() => this.openModal(geneID)}></div>
+  //   )
+  // }
+
+  const mergedColums = showAll
+    ? { ...updateOrDeleteColumns, ...headersAndColumnWidth }
+    : headersAndColumnWidth;
+
+  const headers = Object.keys(mergedColums);
+  const columns = headers.map((header) => {
+    if (['update', 'delete'].includes(header)) {
+      return mergedColums[header];
+    }
+
+    return { Header: header, accessor: header, width: mergedColums[header] };
+  });
 
   return columns;
 }

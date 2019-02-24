@@ -13,7 +13,7 @@ export function TableNotActiveCustomers() {
   };
 
   useEffect(() => {
-    fetchAllData();
+    fetchInactiveCustomers();
   }, []);
 
   console.log(data);

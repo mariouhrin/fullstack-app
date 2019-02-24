@@ -23,7 +23,7 @@ export async function getTotalBalanceHandler(request: Request, h: ResponseToolki
 export async function getInactiveCustomersHandler(request: Request, h: ResponseToolkit) {
   try {
     const inactiveCustomers: Customer[] = await controller.getInactiveCustomers();
-    return h.response({ inactiveCustomers}).code(200);
+    return h.response(inactiveCustomers).code(200);
   } catch (e) {
     return getBoomError(e);
   }

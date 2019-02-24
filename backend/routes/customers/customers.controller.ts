@@ -1,15 +1,39 @@
-import * as dao from '../../dao/customers.dao';
-import { NotFoundError } from '../../lib/error-utils';
 import _ from 'lodash';
 
-export async function getAllCustomers(): Promise<Customer[]> {
-  const customers = await dao.getAllCustomersDao();
+import * as dao from '../../dao/customers.dao';
+import { NotFoundError } from '../../lib/error-utils';
+import { transformingData } from './customers.utils';
 
-  if (_.isEmpty(customers)) {
+export async function getAllCustomers(): Promise<Customer[]> {
+  const allCustomersData = await dao.getAllCustomersDao();
+
+  if (_.isEmpty(allCustomersData)) {
     throw new NotFoundError('Customers not found.');
   }
 
-  return customers;
+  const transformData = transformingData(allCustomersData);
+  return transformData;
+}
+
+export async function getTotalBalance(): Promise<number> {
+  const totalBalance = await dao.getTotalBalanceDao();
+
+  if (_.isEmpty(totalBalance)) {
+    throw new NotFoundError('Cannot get total balance');
+  }
+  return totalBalance;
+}
+
+export async function getInactiveCustomers(): Promise<Customer[]> {
+  const inactiveCustomers: Customer[] = await dao.getInactiveCustomersDao();
+
+  if (_.isEmpty(inactiveCustomers)) {
+    throw new NotFoundError('Not found inactive customers');
+  }
+
+  const transformData = transformingData(inactiveCustomers);
+
+  return transformData;
 }
 
 export async function getCustomerByGuid(guid: string): Promise<Customer> {

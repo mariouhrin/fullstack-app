@@ -11,6 +11,24 @@ export async function getAllCustomersHandler(request: Request, h: ResponseToolki
   }
 }
 
+export async function getTotalBalanceHandler(request: Request, h: ResponseToolkit) {
+  try {
+    const totalBalance = await controller.getTotalBalance();
+    return h.response({ totalBalance }).code(200);
+  } catch (e) {
+    return getBoomError(e);
+  }
+}
+
+export async function getInactiveCustomersHandler(request: Request, h: ResponseToolkit) {
+  try {
+    const inactiveCustomers: Customer[] = await controller.getInactiveCustomers();
+    return h.response({ inactiveCustomers}).code(200);
+  } catch (e) {
+    return getBoomError(e);
+  }
+}
+
 export async function getCustomerByGuidHandler(request: Request, h: ResponseToolkit) {
   const { guid } = request.params;
 

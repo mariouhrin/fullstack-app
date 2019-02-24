@@ -865,14 +865,6 @@
     "@types/minimatch" "*"
     "@types/node" "*"
 
-"@types/hapi-auth-jwt2@^8.0.0":
-  version "8.0.2"
-  resolved "https://registry.yarnpkg.com/@types/hapi-auth-jwt2/-/hapi-auth-jwt2-8.0.2.tgz#bbb2adadf0b0f5512c08ad9919dd66afd8dea736"
-  integrity sha512-xoRuSKY9wF+GFLugUr7blN3qOFySWlIog6DCamxt70FvS1CuG0SxXd6f6Si1eQH8fygsWhMUa/SLrS2Ya7tvrw==
-  dependencies:
-    "@types/hapi" "*"
-    "@types/jsonwebtoken" "*"
-
 "@types/hapi@*":
   version "18.0.1"
   resolved "https://registry.yarnpkg.com/@types/hapi/-/hapi-18.0.1.tgz#4e1f76b89b6d939aaab2ecbce7576146f5ea2739"
@@ -924,13 +916,6 @@
   version "13.6.3"
   resolved "https://registry.yarnpkg.com/@types/joi/-/joi-13.6.3.tgz#79364839a9cc2c6d4d915ef8822e1f703e28648f"
   integrity sha512-n5tDa0/3MUtHsA2fVH+emDfGQkPramIpWaOvWS+7C/Yq7bn2j979RAIy9pbl4F4hSE5lwjgBXhJN019DP+3ofg==
-
-"@types/jsonwebtoken@*":
-  version "8.3.0"
-  resolved "https://registry.yarnpkg.com/@types/jsonwebtoken/-/jsonwebtoken-8.3.0.tgz#1fe79489df97b49273401ac3c8019cbf1dae4578"
-  integrity sha512-YKnUTR4VxwljbPORPrRon9E3uel1aD8nUdvzqArCCdMTWPvo0gnI2UZkwIHN2QATdj6HYXV/Iq3/KcecAO42Ww==
-  dependencies:
-    "@types/node" "*"
 
 "@types/jss@^9.5.6":
   version "9.5.7"
@@ -1876,7 +1861,7 @@ boolbase@^1.0.0, boolbase@~1.0.0:
   resolved "https://registry.yarnpkg.com/boolbase/-/boolbase-1.0.0.tgz#68dff5fbe60c51eb37725ea9e3ed310dcc1e776e"
   integrity sha1-aN/1++YMUes3cl6p4+0xDcwed24=
 
-boom@7.x.x, boom@^7.1.1:
+boom@7.x.x:
   version "7.3.0"
   resolved "https://registry.yarnpkg.com/boom/-/boom-7.3.0.tgz#733a6d956d33b0b1999da3fe6c12996950d017b9"
   integrity sha512-Swpoyi2t5+GhOEGw8rEsKvTxFLIDiiKoUc2gsoV6Lyr43LHBIzch3k2MvYUs8RTROrIkVJ3Al0TkaOGjnb+B6A==
@@ -2721,7 +2706,7 @@ cookie-signature@1.0.6:
   resolved "https://registry.yarnpkg.com/cookie-signature/-/cookie-signature-1.0.6.tgz#e303a882b342cc3ee8ca513a79999734dab3ae2c"
   integrity sha1-4wOogrNCzD7oylE6eZmXNNqzriw=
 
-cookie@0.3.1, cookie@^0.3.1:
+cookie@0.3.1:
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/cookie/-/cookie-0.3.1.tgz#e7e0a1f9ef43b4c8ba925c5c5a96e806d16873bb"
   integrity sha1-5+Ch+e9DtMi6klxcWpboBtFoc7s=
@@ -4754,15 +4739,6 @@ handlebars@^4.0.3:
   optionalDependencies:
     uglify-js "^3.1.4"
 
-hapi-auth-jwt2@^8.1.0:
-  version "8.3.0"
-  resolved "https://registry.yarnpkg.com/hapi-auth-jwt2/-/hapi-auth-jwt2-8.3.0.tgz#6bff61c7eee647e5cb2c90dcfdaef1efaaf82c43"
-  integrity sha512-kgqIvkvfxP6+CWOadFFyLnQGft49pnxoSiD9DB9p0/xuj1ZM49O/U/hTOoYLgQf4Kyvvn+z2pDwfHAwJRdfvUg==
-  dependencies:
-    boom "^7.1.1"
-    cookie "^0.3.1"
-    jsonwebtoken "^8.1.0"
-
 hapi@^17.4.0:
   version "17.8.4"
   resolved "https://registry.yarnpkg.com/hapi/-/hapi-17.8.4.tgz#ef09e60bb0918e0d32ff2169c2daa90c06ceabe1"
@@ -5964,7 +5940,7 @@ jsonify@~0.0.0:
   resolved "https://registry.yarnpkg.com/jsonify/-/jsonify-0.0.0.tgz#2c74b6ee41d93ca51b7b5aaee8f503631d252a73"
   integrity sha1-LHS27kHZPKUbe1qu6PUDYx0lKnM=
 
-jsonwebtoken@^8.1.0, jsonwebtoken@^8.2.1:
+jsonwebtoken@^8.2.1:
   version "8.5.0"
   resolved "https://registry.yarnpkg.com/jsonwebtoken/-/jsonwebtoken-8.5.0.tgz#ebd0ca2a69797816e1c5af65b6c759787252947e"
   integrity sha512-IqEycp0znWHNA11TpYi77bVgyBO/pGESDh7Ajhas+u0ttkGkKYIIAjniL4Bw5+oVejVF+SYkaI7XKfwCCyeTuA==
@@ -8845,6 +8821,13 @@ react-lifecycles-compat@^3.0.2, react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
+
+react-table@^6.9.2:
+  version "6.9.2"
+  resolved "https://registry.yarnpkg.com/react-table/-/react-table-6.9.2.tgz#6a59adfeb8d5deced288241ed1c7847035b5ec5f"
+  integrity sha512-sTbNHU8Um0xRtmCd1js873HXnXaMWeBwZoiljuj0l1d44eaqjKyYPK/3HCBbJg1yeE2O5pQJ3Km0tlm9niNL9w==
+  dependencies:
+    classnames "^2.2.5"
 
 react-transition-group@^2.2.1:
   version "2.5.3"

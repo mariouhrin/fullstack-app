@@ -1,7 +1,7 @@
 type Customer = {
   index?: number;
   guid?: string;
-  isactive: boolean;
+  isactive: boolean | string;
   balance: number;
   age: number;
   name: string;

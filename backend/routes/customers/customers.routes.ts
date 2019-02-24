@@ -13,6 +13,22 @@ export default [
   },
   {
     method: 'GET',
+    path: '/api/customers/total',
+    options: {
+      description: 'Get total balance of all customers'
+    },
+    handler: handler.getTotalBalanceHandler
+  },
+  {
+    method: 'GET',
+    path: '/api/customers/inactive',
+    options: {
+      description: 'Get all inactive customers'
+    },
+    handler: handler.getInactiveCustomersHandler
+  },
+  {
+    method: 'GET',
     path: '/api/customers/{guid}',
     options: {
       validate: {

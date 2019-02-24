@@ -1,12 +1,16 @@
 import React from 'react';
 import { hot } from 'react-hot-loader/root';
 import { setConfig } from 'react-hot-loader';
+import { TableAllCustomers, TotalBalance } from '../components';
+
 import 'purecss/build/pure.css';
+import 'react-table/react-table.css';
 
 const Root = () => (
-  <article className="root">
-    <h1>Hello world</h1>
-  </article>
+  <section className="root">
+    <TotalBalance />
+    <TableAllCustomers />
+  </section>
 );
 
 setConfig({

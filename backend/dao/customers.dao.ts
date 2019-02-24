@@ -20,7 +20,24 @@ export async function getAllCustomersDao(transaction?: Knex.Transaction): Promis
   return trx('customers').select('*');
 }
 
-export async function getCustomerByGuidDao(guid: string, transaction?: Knex.Transaction): Promise<Customer> {
+export async function getTotalBalanceDao(transaction?: Knex.Transaction): Promise<number> {
+  const trx = transaction || knex;
+  const totalBalance = await trx('customers').sum('balance as total');
+  const totalBalanceToNumber = totalBalance[0]['total'];
+  return totalBalanceToNumber;
+}
+
+export async function getInactiveCustomersDao(transaction?: Knex.Transaction): Promise<Customer[]> {
+  const trx = transaction || knex;
+  return trx('customers')
+    .select('*')
+    .where('isactive', false);
+}
+
+export async function getCustomerByGuidDao(
+  guid: string,
+  transaction?: Knex.Transaction
+): Promise<Customer> {
   const trx = transaction || knex;
   return trx('customers')
     .select('*')
@@ -28,7 +45,10 @@ export async function getCustomerByGuidDao(guid: string, transaction?: Knex.Tran
     .first();
 }
 
-export async function createCustomerDao(customer: Customer, transaction?: Knex.Transaction): Promise<string> {
+export async function createCustomerDao(
+  customer: Customer,
+  transaction?: Knex.Transaction
+): Promise<string> {
   const trx = transaction || knex;
 
   const customerData = {
@@ -63,7 +83,10 @@ export async function updateCustomerDao(
   return;
 }
 
-export async function deleteCustomerByGuidDao(guid: string, transaction?: Knex.Transaction): Promise<Customer> {
+export async function deleteCustomerByGuidDao(
+  guid: string,
+  transaction?: Knex.Transaction
+): Promise<Customer> {
   const trx = transaction || knex;
   return trx('customers')
     .delete()

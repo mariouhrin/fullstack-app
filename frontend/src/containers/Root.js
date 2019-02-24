@@ -2,7 +2,7 @@
 import React from 'react';
 import { hot } from 'react-hot-loader/root';
 import { setConfig } from 'react-hot-loader';
-import { TableAllCustomers, TotalBalance, TableNotActiveCustomers } from '../components';
+import { TableAllCustomers, TotalBalance, TableNotActiveCustomers, Form } from '../components';
 
 import 'purecss/build/pure.css';
 import 'react-table/react-table.css';
@@ -12,6 +12,7 @@ const Root = () => {
 
   return (
     <section className="root">
+      <Form />
       <TotalBalance />
       <TableAllCustomers />
       <TableNotActiveCustomers />

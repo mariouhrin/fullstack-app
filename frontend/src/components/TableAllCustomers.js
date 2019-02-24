@@ -3,18 +3,23 @@ import ReactTable from 'react-table';
 
 import { axiosHandler } from '../utils/utils';
 import { columnsToShow, customFilter } from './helpers';
+import { ModalPopUp } from './Modal';
 
 export function TableAllCustomers() {
   const [data, setData] = useState([]);
-  const [modal, setModal] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
 
   const fetchAllData = async () => {
     const response = await axiosHandler('get', 'api/customers');
     setData(response.data);
   };
 
-  const showModal = () => {
-    setModal(true);
+  const handleOpenModal = () => {
+    setOpenModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setOpenModal(false);
   };
 
   useEffect(() => {
@@ -27,7 +32,7 @@ export function TableAllCustomers() {
         {data.length && (
           <ReactTable
             data={data}
-            columns={columnsToShow(true, showModal)}
+            columns={columnsToShow(true, handleOpenModal)}
             filterable
             defaultFilterMethod={customFilter}
             defaultPageSize={7}
@@ -40,7 +45,7 @@ export function TableAllCustomers() {
             className="-striped -highlight"
           />
         )}
-        {modal && <div>Show Modal</div>}
+        <ModalPopUp isOpen={openModal} onRequestClose={handleCloseModal} />
       </section>
     </>
   );

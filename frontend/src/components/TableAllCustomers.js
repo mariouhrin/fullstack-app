@@ -16,7 +16,7 @@ export function TableAllCustomers({ handleAppState, appInstance, notify }) {
     setData(response.data);
   };
 
-  const customerGuidToDelete = (guidWithAction) => {
+  const customerGuidForDelete = (guidWithAction) => {
     setCustumerGuid(guidWithAction);
   };
 
@@ -69,7 +69,7 @@ export function TableAllCustomers({ handleAppState, appInstance, notify }) {
         {data.length && (
           <ReactTable
             data={data}
-            columns={columnsAll(handleOpenModal, customerGuidToDelete)}
+            columns={columnsAll(handleOpenModal, customerGuidForDelete)}
             filterable
             defaultFilterMethod={customFilter}
             defaultPageSize={7}

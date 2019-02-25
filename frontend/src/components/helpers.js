@@ -1,6 +1,6 @@
 import React from 'react';
 
-export function columnsAll(handleOpenModal, customerGuidToDelete) {
+export function columnsAll(handleOpenModal, customerGuidForDelete) {
   const headersAndColumnWidth = {
     name: 150,
     balance: 70,
@@ -37,7 +37,7 @@ export function columnsAll(handleOpenModal, customerGuidToDelete) {
         type="button"
         tabIndex={0}
         style={cellStyle}
-        onClick={() => customerGuidToDelete({ guid, action: 'delete' })}
+        onClick={() => customerGuidForDelete({ guid, action: 'delete' })}
       >
         {row.value}
       </button>

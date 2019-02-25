@@ -113,7 +113,7 @@ export function inititialFormData(dataForUpdate) {
     balance: '',
     phone: '',
     company: '',
-    gender: '',
+    gender: 'female',
     age: '',
     email: '',
     address: ''

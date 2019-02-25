@@ -3,27 +3,38 @@ import React, { useState } from 'react';
 import { axiosHandler } from '../utils/utils';
 import { inititialFormData } from './helpers';
 
-export function Form({ dataForUpdate, handleAppState }) {
+export function Form({ dataForUpdate, handleAppState, crudAction }) {
   const [data, setData] = useState(() => inititialFormData(dataForUpdate));
 
   const handleChange = (e, field) => {
     setData({ ...data, [field]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e, crudAction) => {
     e.preventDefault();
     const { guid, ...sendData } = data;
-    await axiosHandler('put', `api/customers/${guid}`, sendData);
+    console.log(sendData);
+
+    const requests = {
+      create: {
+        method: 'post',
+        endpoint: 'api/customers'
+      },
+      update: {
+        method: 'put',
+        endpoint: `api/customers/${guid}`
+      }
+    };
+
+    await axiosHandler(requests[crudAction].method, requests[crudAction].endpoint, sendData);
     await handleAppState();
   };
-
-  console.log(inititialFormData(dataForUpdate));
 
   return (
     <article className="form-wrapper">
       <div>
         <h3>Please fill the form</h3>
-        <form className="pure-form pure-form-stacked" onSubmit={handleSubmit}>
+        <form className="pure-form pure-form-stacked" onSubmit={(e) => handleSubmit(e, crudAction)}>
           <section className="form-inputs-wrapper">
             <fieldset>
               {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}

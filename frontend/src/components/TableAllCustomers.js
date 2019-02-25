@@ -87,6 +87,7 @@ export function TableAllCustomers({ handleAppState, appInstance }) {
           onRequestClose={handleCloseModal}
           dataForUpdate={dataForUpdate}
           handleAppState={handleAppState}
+          crudAction="update"
         />
       </section>
     </>

@@ -25,8 +25,11 @@ function Root() {
 
       <h3 style={{ marginLeft: '7.5%' }}>List of all customers</h3>
 
-      <CreateCustomer />
+      <CreateCustomer handleAppState={handleAppState} />
       <TableAllCustomers handleAppState={handleAppState} appInstance={appInstance} />
+
+      <h3 style={{ marginLeft: '7.5%', marginTop: '35px' }}>List of all inactive customers</h3>
+
       <TableNotActiveCustomers appInstance={appInstance} />
     </section>
   );

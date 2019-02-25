@@ -5,7 +5,7 @@ import { axiosHandler } from '../utils/utils';
 import { columnsAll, customFilter } from './helpers';
 import { ModalPopUp } from './Modal';
 
-export function TableAllCustomers({ handleAppState, appInstance }) {
+export function TableAllCustomers({ handleAppState, appInstance, notify }) {
   const [data, setData] = useState([]);
   const [dataForUpdate, setDataForUpdate] = useState([]);
   const [openModal, setOpenModal] = useState(false);
@@ -87,6 +87,7 @@ export function TableAllCustomers({ handleAppState, appInstance }) {
           onRequestClose={handleCloseModal}
           dataForUpdate={dataForUpdate}
           handleAppState={handleAppState}
+          notify={notify}
           crudAction="update"
         />
       </section>

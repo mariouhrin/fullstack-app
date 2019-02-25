@@ -5,7 +5,14 @@ import { Form } from './Form';
 
 Modal.setAppElement('#app');
 
-export function ModalPopUp({ isOpen, onRequestClose, dataForUpdate, handleAppState, crudAction }) {
+export function ModalPopUp({
+  isOpen,
+  onRequestClose,
+  dataForUpdate,
+  handleAppState,
+  crudAction,
+  notify
+}) {
   return (
     <Modal
       isOpen={isOpen}
@@ -28,7 +35,12 @@ export function ModalPopUp({ isOpen, onRequestClose, dataForUpdate, handleAppSta
         Close
       </button>
 
-      <Form dataForUpdate={dataForUpdate} handleAppState={handleAppState} crudAction={crudAction} />
+      <Form
+        dataForUpdate={dataForUpdate}
+        handleAppState={handleAppState}
+        crudAction={crudAction}
+        notify={notify}
+      />
     </Modal>
   );
 }

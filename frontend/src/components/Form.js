@@ -3,17 +3,16 @@ import React, { useState } from 'react';
 import { axiosHandler } from '../utils/utils';
 import { inititialFormData } from './helpers';
 
-export function Form({ dataForUpdate, handleAppState, crudAction }) {
+export function Form({ dataForUpdate, handleAppState, crudAction, notify }) {
   const [data, setData] = useState(() => inititialFormData(dataForUpdate));
 
   const handleChange = (e, field) => {
     setData({ ...data, [field]: e.target.value });
   };
 
-  const handleSubmit = async (e, crudAction) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const { guid, ...sendData } = data;
-    console.log(sendData);
 
     const requests = {
       create: {
@@ -33,8 +32,8 @@ export function Form({ dataForUpdate, handleAppState, crudAction }) {
   return (
     <article className="form-wrapper">
       <div>
-        <h3>Please fill the form</h3>
-        <form className="pure-form pure-form-stacked" onSubmit={(e) => handleSubmit(e, crudAction)}>
+        <h3>Please {crudAction === 'create' ? 'fill ' : 'edit '}the form</h3>
+        <form className="pure-form pure-form-stacked" onSubmit={(e) => handleSubmit(e)}>
           <section className="form-inputs-wrapper">
             <fieldset>
               {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
@@ -138,7 +137,7 @@ export function Form({ dataForUpdate, handleAppState, crudAction }) {
               </label>
             </fieldset>
           </section>
-          <button type="submit" className="pure-button button-custom">
+          <button type="submit" className="pure-button button-custom" onClick={notify}>
             Submit
           </button>
         </form>

@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { ModalPopUp } from './Modal';
 // import { Form } from './Form';
 
-export function CreateCustomer({ handleAppState }) {
+export function CreateCustomer({ handleAppState, notify }) {
   const [openModal, setOpenModal] = useState(false);
 
   const handleOpenModal = () => {
@@ -28,6 +28,7 @@ export function CreateCustomer({ handleAppState }) {
         onRequestClose={handleCloseModal}
         dataForUpdate={[]}
         handleAppState={handleAppState}
+        notify={notify}
         crudAction="create"
       />
     </>

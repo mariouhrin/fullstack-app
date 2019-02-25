@@ -8,10 +8,6 @@ const parseDateToUTC = (date: string) => {
 };
 types.setTypeParser(dateTypeOID, parseDateToUTC);
 
-// setting type parser for SERIAL (int4) to return strings for ids to prevent breaking changes
-// const int4OID = 23;
-// types.setTypeParser(int4OID, (num) => num);
-
 readConfig();
 
 export default {

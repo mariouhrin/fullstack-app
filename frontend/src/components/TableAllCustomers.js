@@ -2,39 +2,31 @@ import React, { useState, useEffect } from 'react';
 import ReactTable from 'react-table';
 
 import { axiosHandler } from '../utils/utils';
-import { columnsAll, customFilter } from './helpers';
+import { columnsAll, customFilter, hideTablesScrollbar } from './helpers';
 import { ModalPopUp } from './Modal';
 
 export function TableAllCustomers({ handleAppState, appInstance, notify }) {
   const [data, setData] = useState([]);
   const [dataForUpdate, setDataForUpdate] = useState([]);
   const [openModal, setOpenModal] = useState(false);
-  const [customerGuid, setCustumerGuid] = useState({ guid: '', action: '' });
 
-  const fetchAllData = async () => {
-    const response = await axiosHandler('get', 'api/customers');
-    setData(response.data);
-  };
-
-  const customerGuidForDelete = (guidWithAction) => {
-    setCustumerGuid(guidWithAction);
-  };
-
-  const deleteCustomerByGuid = async () => {
-    const { guid } = customerGuid;
-    await axiosHandler('delete', `api/customers/${guid}`);
-    await handleAppState();
-  };
-
-  const handleOpenModal = (guidWithAction) => {
-    const { guid } = guidWithAction;
+  const handleOpenModal = (guid) => {
     setDataForUpdate(data.filter((record) => record.guid === guid));
     setOpenModal(true);
-    setCustumerGuid(guidWithAction);
   };
 
   const handleCloseModal = () => {
     setOpenModal(false);
+  };
+
+  const deleteCustomerByGuid = async (guid) => {
+    await axiosHandler('delete', `api/customers/${guid}`);
+    await handleAppState();
+  };
+
+  const fetchAllData = async () => {
+    const response = await axiosHandler('get', 'api/customers');
+    setData(response.data);
   };
 
   useEffect(() => {
@@ -42,25 +34,7 @@ export function TableAllCustomers({ handleAppState, appInstance, notify }) {
   }, [appInstance]);
 
   useEffect(() => {
-    if (customerGuid.action === 'delete') {
-      deleteCustomerByGuid();
-    }
-  }, [customerGuid]);
-
-  useEffect(() => {
-    const reactTableOverflow = document.querySelectorAll('.ReactTable .rt-table');
-
-    if (openModal) {
-      reactTableOverflow.forEach((element) => {
-        const el = element;
-        el.style.overflow = 'hidden';
-      });
-    } else {
-      reactTableOverflow.forEach((element) => {
-        const el = element;
-        el.style.overflow = 'scroll';
-      });
-    }
+    hideTablesScrollbar(openModal);
   }, [openModal]);
 
   return (
@@ -69,7 +43,7 @@ export function TableAllCustomers({ handleAppState, appInstance, notify }) {
         {data.length && (
           <ReactTable
             data={data}
-            columns={columnsAll(handleOpenModal, customerGuidForDelete)}
+            columns={columnsAll(handleOpenModal, deleteCustomerByGuid)}
             filterable
             defaultFilterMethod={customFilter}
             defaultPageSize={7}

@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { ModalPopUp } from './Modal';
+import { hideTablesScrollbar } from './helpers';
 
 export function CreateCustomer({ handleAppState, notify }) {
   const [openModal, setOpenModal] = useState(false);
@@ -12,6 +13,10 @@ export function CreateCustomer({ handleAppState, notify }) {
   const handleCloseModal = () => {
     setOpenModal(false);
   };
+
+  useEffect(() => {
+    hideTablesScrollbar(openModal);
+  }, [openModal]);
 
   return (
     <>

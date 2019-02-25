@@ -1,6 +1,6 @@
 import React from 'react';
 
-export function columnsAll(handleOpenModal, customerGuidForDelete) {
+export function columnsAll(handleOpenModal, deleteCustomerByGuid) {
   const headersAndColumnWidth = {
     name: 150,
     balance: 70,
@@ -19,12 +19,7 @@ export function columnsAll(handleOpenModal, customerGuidForDelete) {
     const { guid } = row.original;
 
     return (
-      <button
-        type="button"
-        tabIndex={0}
-        style={cellStyle}
-        onClick={() => handleOpenModal({ guid, action: 'update' })}
-      >
+      <button type="button" tabIndex={0} style={cellStyle} onClick={() => handleOpenModal(guid)}>
         {row.value}
       </button>
     );
@@ -37,7 +32,7 @@ export function columnsAll(handleOpenModal, customerGuidForDelete) {
         type="button"
         tabIndex={0}
         style={cellStyle}
-        onClick={() => customerGuidForDelete({ guid, action: 'delete' })}
+        onClick={() => deleteCustomerByGuid(guid)}
       >
         {row.value}
       </button>
@@ -118,4 +113,20 @@ export function inititialFormData(dataForUpdate) {
     email: '',
     address: ''
   };
+}
+
+export function hideTablesScrollbar(openModal) {
+  const reactTableOverflow = document.querySelectorAll('.ReactTable .rt-table');
+
+  if (openModal) {
+    reactTableOverflow.forEach((element) => {
+      const el = element;
+      el.style.overflow = 'hidden';
+    });
+  } else {
+    reactTableOverflow.forEach((element) => {
+      const el = element;
+      el.style.overflow = 'scroll';
+    });
+  }
 }

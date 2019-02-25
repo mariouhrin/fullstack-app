@@ -1,4 +1,4 @@
 export * from './TableAllCustomers';
 export * from './TotalBalance';
 export * from './TableNotActiveCustomers';
-export * from './Form';
+export * from './CreateCustomer';

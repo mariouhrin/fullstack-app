@@ -14,7 +14,7 @@ export function TotalBalance({ appInstance }) {
   }, [appInstance]);
 
   return (
-    <div style={{ marginLeft: '7.5%' }}>
+    <div style={{ marginLeft: '7.5%', marginTop: '40px', marginBottom: '30px' }}>
       <h2 style={{ color: 'navy' }}>Total balance: {totalBalance}</h2>
     </div>
   );

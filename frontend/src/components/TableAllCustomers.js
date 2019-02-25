@@ -23,7 +23,7 @@ export function TableAllCustomers({ handleAppState, appInstance }) {
   const deleteCustomerByGuid = async () => {
     const { guid } = customerGuid;
     await axiosHandler('delete', `api/customers/${guid}`);
-    handleAppState();
+    await handleAppState();
   };
 
   const handleOpenModal = (guidWithAction) => {
@@ -65,7 +65,6 @@ export function TableAllCustomers({ handleAppState, appInstance }) {
 
   return (
     <>
-      <h3 style={{ marginLeft: '7.5%', marginTop: '50px' }}>List of all customers</h3>
       <section style={{ width: '85%', margin: 'auto', fontSize: '14px', textAlign: 'center' }}>
         {data.length && (
           <ReactTable
@@ -73,7 +72,7 @@ export function TableAllCustomers({ handleAppState, appInstance }) {
             columns={columnsAll(handleOpenModal, customerGuidToDelete)}
             filterable
             defaultFilterMethod={customFilter}
-            defaultPageSize={8}
+            defaultPageSize={7}
             defaultSorted={[
               {
                 id: 'balance',
@@ -87,6 +86,7 @@ export function TableAllCustomers({ handleAppState, appInstance }) {
           isOpen={openModal}
           onRequestClose={handleCloseModal}
           dataForUpdate={dataForUpdate}
+          handleAppState={handleAppState}
         />
       </section>
     </>

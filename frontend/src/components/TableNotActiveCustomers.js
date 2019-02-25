@@ -18,7 +18,7 @@ export function TableNotActiveCustomers({ appInstance }) {
 
   return (
     <>
-      <h3 style={{ marginLeft: '7.5%', marginTop: '50px' }}>List of all inactive customers</h3>
+      <h3 style={{ marginLeft: '7.5%', marginTop: '35px' }}>List of all inactive customers</h3>
       <section style={{ width: '45%', marginLeft: '7.5%', fontSize: '14px', textAlign: 'center' }}>
         {data.length && (
           <ReactTable

@@ -1,16 +1,20 @@
 import React, { useState } from 'react';
+
+import { axiosHandler } from '../utils/utils';
 import { inititialFormData } from './helpers';
 
-export function Form({ dataForUpdate }) {
+export function Form({ dataForUpdate, handleAppState }) {
   const [data, setData] = useState(() => inititialFormData(dataForUpdate));
 
   const handleChange = (e, field) => {
     setData({ ...data, [field]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(data);
+    const { guid, ...sendData } = data;
+    await axiosHandler('put', `api/customers/${guid}`, sendData);
+    await handleAppState();
   };
 
   console.log(inititialFormData(dataForUpdate));

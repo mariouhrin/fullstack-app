@@ -19,34 +19,34 @@ export function columnsAll(handleOpenModal, customerGuidToDelete) {
     const { guid } = row.original;
 
     return (
-      <div
-        role="button"
+      <button
+        type="button"
         tabIndex={0}
         style={cellStyle}
         onClick={() => handleOpenModal({ guid, action: 'update' })}
       >
         {row.value}
-      </div>
+      </button>
     );
   };
   const cellLinkDelete = (row) => {
     const { guid } = row.original;
 
     return (
-      <div
-        role="button"
+      <button
+        type="button"
         tabIndex={0}
         style={cellStyle}
         onClick={() => customerGuidToDelete({ guid, action: 'delete' })}
       >
         {row.value}
-      </div>
+      </button>
     );
   };
 
   const updateOrDeleteColumns = {
-    update: { accessor: 'update', width: 60, Filter: () => <div />, Cell: cellLinkUpdate },
-    delete: { accessor: 'delete', width: 60, Filter: () => <div />, Cell: cellLinkDelete }
+    update: { accessor: 'update', width: 70, Filter: () => <div />, Cell: cellLinkUpdate },
+    delete: { accessor: 'delete', width: 70, Filter: () => <div />, Cell: cellLinkDelete }
   };
 
   const mergedColums = { ...updateOrDeleteColumns, ...headersAndColumnWidth };
@@ -96,6 +96,7 @@ export function customFilter(filter, row) {
 export function inititialFormData(dataForUpdate) {
   if (dataForUpdate.length) {
     return {
+      guid: dataForUpdate[0].guid,
       name: dataForUpdate[0].name,
       balance: dataForUpdate[0].balance,
       phone: dataForUpdate[0].phone,

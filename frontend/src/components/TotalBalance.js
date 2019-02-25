@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { axiosHandler } from '../utils/utils';
 
-export function TotalBalance() {
+export function TotalBalance({ appInstance }) {
   const [totalBalance, setTotalBalance] = useState(undefined);
 
   const fetchTotalBalance = async () => {
@@ -11,7 +11,7 @@ export function TotalBalance() {
 
   useEffect(() => {
     fetchTotalBalance();
-  }, []);
+  }, [appInstance]);
 
   return (
     <div style={{ marginLeft: '7.5%' }}>

@@ -12,9 +12,6 @@ export function ModalPopUp({ isOpen, onRequestClose, dataForUpdate }) {
       onRequestClose={onRequestClose}
       contentLabel="Modal"
       style={{
-        overlay: {
-          zIndex: 9999
-        },
         content: {
           position: 'fixed',
           top: '10%',
@@ -22,8 +19,7 @@ export function ModalPopUp({ isOpen, onRequestClose, dataForUpdate }) {
           right: '20%',
           bottom: '20%',
           padding: '20px 20px 0px 20px',
-          backgroundColor: '#F9F9F9',
-          zIndex: 9999
+          backgroundColor: '#F9F9F9'
         }
       }}
     >

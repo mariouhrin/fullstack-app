@@ -1,19 +1,27 @@
-// import React, { useState } from 'react';
-import React from 'react';
+import React, { useState } from 'react';
 import { hot } from 'react-hot-loader/root';
 import { setConfig } from 'react-hot-loader';
-import { TableAllCustomers, TotalBalance, TableNotActiveCustomers } from '../components';
 
 import 'purecss/build/pure.css';
 import 'react-table/react-table.css';
 
-const Root = () => (
-  <section className="root">
-    <TotalBalance />
-    <TableAllCustomers />
-    <TableNotActiveCustomers />
-  </section>
-);
+import { TableAllCustomers, TotalBalance, TableNotActiveCustomers } from '../components';
+
+function Root() {
+  const [appInstance, setAppInstance] = useState(0);
+
+  const handleAppState = () => {
+    setAppInstance(appInstance + 1);
+  };
+
+  return (
+    <section className="root">
+      <TotalBalance appInstance={appInstance} />
+      <TableAllCustomers handleAppState={handleAppState} appInstance={appInstance} />
+      <TableNotActiveCustomers appInstance={appInstance} />
+    </section>
+  );
+}
 
 setConfig({
   ignoreSFC: true,

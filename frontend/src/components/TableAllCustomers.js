@@ -5,7 +5,7 @@ import { axiosHandler } from '../utils/utils';
 import { columnsAll, customFilter } from './helpers';
 import { ModalPopUp } from './Modal';
 
-export function TableAllCustomers() {
+export function TableAllCustomers({ handleAppState, appInstance }) {
   const [data, setData] = useState([]);
   const [dataForUpdate, setDataForUpdate] = useState([]);
   const [openModal, setOpenModal] = useState(false);
@@ -23,6 +23,7 @@ export function TableAllCustomers() {
   const deleteCustomerByGuid = async () => {
     const { guid } = customerGuid;
     await axiosHandler('delete', `api/customers/${guid}`);
+    handleAppState();
   };
 
   const handleOpenModal = (guidWithAction) => {
@@ -38,13 +39,29 @@ export function TableAllCustomers() {
 
   useEffect(() => {
     fetchAllData();
-  }, []);
+  }, [appInstance]);
 
   useEffect(() => {
     if (customerGuid.action === 'delete') {
       deleteCustomerByGuid();
     }
   }, [customerGuid]);
+
+  useEffect(() => {
+    const reactTableOverflow = document.querySelectorAll('.ReactTable .rt-table');
+
+    if (openModal) {
+      reactTableOverflow.forEach((element) => {
+        const el = element;
+        el.style.overflow = 'hidden';
+      });
+    } else {
+      reactTableOverflow.forEach((element) => {
+        const el = element;
+        el.style.overflow = 'scroll';
+      });
+    }
+  }, [openModal]);
 
   return (
     <>

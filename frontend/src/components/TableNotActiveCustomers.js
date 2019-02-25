@@ -4,7 +4,7 @@ import ReactTable from 'react-table';
 import { axiosHandler } from '../utils/utils';
 import { columnsInactive, customFilter } from './helpers';
 
-export function TableNotActiveCustomers() {
+export function TableNotActiveCustomers({ appInstance }) {
   const [data, setData] = useState([]);
 
   const fetchInactiveCustomers = async () => {
@@ -14,7 +14,7 @@ export function TableNotActiveCustomers() {
 
   useEffect(() => {
     fetchInactiveCustomers();
-  }, []);
+  }, [appInstance]);
 
   return (
     <>

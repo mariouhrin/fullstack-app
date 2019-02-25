@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ReactTable from 'react-table';
 
 import { axiosHandler } from '../utils/utils';
-import { columnsToShow, customFilter } from './helpers';
+import { columnsInactive, customFilter } from './helpers';
 
 export function TableNotActiveCustomers() {
   const [data, setData] = useState([]);
@@ -18,20 +18,15 @@ export function TableNotActiveCustomers() {
 
   return (
     <>
-      <section style={{ width: '85%', margin: 'auto', fontSize: '8px', textAlign: 'center' }}>
+      <h3 style={{ marginLeft: '7.5%', marginTop: '50px' }}>List of all inactive customers</h3>
+      <section style={{ width: '45%', marginLeft: '7.5%', fontSize: '14px', textAlign: 'center' }}>
         {data.length && (
           <ReactTable
             data={data}
-            columns={columnsToShow()}
+            columns={columnsInactive()}
             filterable
             defaultFilterMethod={customFilter}
-            defaultPageSize={7}
-            defaultSorted={[
-              {
-                id: 'balance',
-                desc: false
-              }
-            ]}
+            defaultPageSize={5}
             className="-striped -highlight"
           />
         )}

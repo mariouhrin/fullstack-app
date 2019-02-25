@@ -6,7 +6,8 @@ export function transformingData(customersData: Customer[]) {
     delete: 'delete',
     ...record,
     isactive: record['isactive'].toString(),
-    registered: moment.utc(record['registered']).format('YYYY-MM-DD')
+    registered: moment.utc(record['registered']).format('YYYY-MM-DD'),
+    discount: Math.round(record.balance / 10)
   }));
 
   return transformedData;

@@ -15,7 +15,7 @@ export function TotalBalance() {
 
   return (
     <div style={{ marginLeft: '7.5%' }}>
-      <h3>Total balance: {totalBalance}</h3>
+      <h2 style={{ color: 'navy' }}>Total balance: {totalBalance}</h2>
     </div>
   );
 }

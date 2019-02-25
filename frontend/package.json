@@ -5,7 +5,6 @@
   "scripts": {
     "start": "webpack-dev-server --env.development --config ./config/webpack.dev.js",
     "build": "webpack --env.production --config ./config/webpack.prod.js",
-    "precommit": "lint-staged",
     "prettier": "prettier --write \"**/*.{js,json,scss}\""
   },
   "devDependencies": {
@@ -61,7 +60,7 @@
     "react-hot-loader": "^4.6.5",
     "react-modal": "^3.8.1",
     "react-table": "^6.9.2",
-    "react-toastify":"^4.5.2"
+    "react-toastify": "^4.5.2"
   },
   "proxy": "http://localhost:3010",
   "browserslist": [
